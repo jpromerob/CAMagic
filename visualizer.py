@@ -9,20 +9,23 @@ import cv2 as cv
 import numpy as np
 import pdb
 import matplotlib.pyplot as plt
-from utils import getNextRow, preprocess, getColorMap, print_all
+from utils import getNextRow, preprocess, print_all
+from matplotlib.colors import LinearSegmentedColormap
+
+my_gradient = LinearSegmentedColormap.from_list('my_gradient', (
+    # Edit this gradient at https://eltos.github.io/gradient/#FF0001-000000-3BD600
+    (0.000, (1.000, 0.000, 0.004)),
+    (0.500, (0.000, 0.000, 0.000)),
+    (1.000, (0.231, 0.839, 0.000))))
 
 if __name__ == "__main__":
-    
-    gif = []
-    
-    
-    evcmap = getColorMap()
-    
+
     x_max = 640
     y_max = 480
-    scale = 4
+    scale = 2/80
     fps = 60
     activity = 1
+    image_of_interest = 255
 
     screen = np.zeros((x_max, y_max),dtype=int)
     print(screen.shape)
@@ -50,12 +53,14 @@ if __name__ == "__main__":
     
             inactive_pixels = np.sum(screen == 0)
             if inactive_pixels < int((100-activity)/100*x_max*y_max):
-                screen = preprocess(screen)                
-                plt.imshow(np.transpose(screen), cmap=evcmap)  
-                plt.axis('off')
-                plt.show()
+                if photo_counter == image_of_interest-1:
+                    screen = preprocess(screen)       
+                    plt.figure(figsize=(x_max*scale, y_max*scale))
+                    plt.imshow(np.transpose(screen), cmap=my_gradient)  
+                    plt.axis('off')
+                    plt.show()
                 photo_counter += 1
-                if photo_counter >= 10:
+                if photo_counter >= image_of_interest:
                     break
 
             # Clear window
