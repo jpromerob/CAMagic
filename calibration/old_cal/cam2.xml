@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <opencv_storage>
-<DVXplorer_DXA00001>
+<DVXplorer_DXA00003>
   <camera_matrix type_id="opencv-matrix">
     <rows>3</rows>
     <cols>3</cols>
     <dt>d</dt>
     <data>
-      7.3300420862843782e+02 0. 3.1762890358216475e+02 0.
-      7.3406986711218553e+02 2.4882717887807465e+02 0. 0. 1.</data></camera_matrix>
+      7.1754702326780773e+02 0. 3.2972582275793962e+02 0.
+      7.1588975133872452e+02 2.5584596890837969e+02 0. 0. 1.</data></camera_matrix>
   <distortion_coefficients type_id="opencv-matrix">
     <rows>5</rows>
     <cols>1</cols>
     <dt>d</dt>
     <data>
-      -7.0725898115360231e-01 3.8744922830774642e+00
-      -8.0213888182214567e-04 1.0539657240868477e-02
-      -1.3276097462182845e+01</data></distortion_coefficients>
+      -4.6215514145700270e-01 9.0605242388125973e-01
+      2.3687171461803398e-03 -5.5564200982072558e-04
+      -1.5192161276868612e+00</data></distortion_coefficients>
   <image_width>640</image_width>
-  <image_height>480</image_height></DVXplorer_DXA00001>
+  <image_height>480</image_height></DVXplorer_DXA00003>
 <use_fisheye_model>0</use_fisheye_model>
 <type>camera</type>
 <pattern_width>8</pattern_width>
@@ -26,6 +26,6 @@
 <board_width>9</board_width>
 <board_height>6</board_height>
 <square_size>30.</square_size>
-<calibration_error>7.6457378349883343e-01</calibration_error>
-<calibration_time>"Wed Oct 27 16:05:08 2021"</calibration_time>
+<calibration_error>7.1394592207565977e-01</calibration_error>
+<calibration_time>"Fri Oct 15 17:18:21 2021"</calibration_time>
 </opencv_storage>

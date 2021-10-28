@@ -6,16 +6,16 @@
     <cols>3</cols>
     <dt>d</dt>
     <data>
-      5.1887598823980909e+02 0. 3.3257221388141306e+02 0.
-      5.1885985740591366e+02 2.5384620241066688e+02 0. 0. 1.</data></camera_matrix>
+      6.7793099660584721e+02 0. 3.3993889354196693e+02 0.
+      6.7903301484195333e+02 2.5365078411477347e+02 0. 0. 1.</data></camera_matrix>
   <distortion_coefficients type_id="opencv-matrix">
     <rows>5</rows>
     <cols>1</cols>
     <dt>d</dt>
     <data>
-      -4.7524938869828293e-01 5.4814159817294317e-01
-      -1.4700598618496409e-04 2.6664303544315931e-04
-      -4.4526323896924236e-01</data></distortion_coefficients>
+      -4.5710833273956097e-01 6.7852721179399478e-01
+      5.0686547596820669e-03 1.0202609072997170e-02
+      -1.3725569303600140e+00</data></distortion_coefficients>
   <image_width>640</image_width>
   <image_height>480</image_height></DVXplorer_DXA00001>
 <use_fisheye_model>0</use_fisheye_model>
@@ -26,6 +26,6 @@
 <board_width>9</board_width>
 <board_height>6</board_height>
 <square_size>30.</square_size>
-<calibration_error>8.3326983301079594e-01</calibration_error>
-<calibration_time>"Fri Oct 15 15:27:30 2021"</calibration_time>
+<calibration_error>6.0194136373240259e-01</calibration_error>
+<calibration_time>"Wed Oct 27 10:14:34 2021"</calibration_time>
 </opencv_storage>
