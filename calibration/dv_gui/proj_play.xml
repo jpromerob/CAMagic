@@ -1,0 +1,76 @@
+<dv version="2.0">
+    <node name="mainloop" path="/mainloop/">
+        <attr key="_guiSupport" type="string">{"lastDeployedHash":"a23cf23895a32f80461e7770efce83058f5845d2"}</attr>
+        <node name="_visualizer_input_file___events_0b4831e7f92f406c8907b69096901cad" path="/mainloop/_visualizer_input_file___events_0b4831e7f92f406c8907b69096901cad/">
+            <attr key="_guiSupport" type="string">{"visualizerX":0,"visualizerY":0,"size":8,"minimized":false,"boxX":50.0,"boxY":400.0}</attr>
+            <attr key="_priorityAttributes" type="string">compression,ipAddress,portNumber</attr>
+            <attr key="compression" type="string">NONE</attr>
+            <attr key="ipAddress" type="string">127.0.0.1</attr>
+            <attr key="logLevel" type="string">INFO</attr>
+            <attr key="maxConcurrentConnections" type="int">10</attr>
+            <attr key="maxConnectionsBacklog" type="int">5</attr>
+            <attr key="maxDataBacklog" type="int">5</attr>
+            <attr key="moduleLibrary" type="string">dv_output_net_tcp_server</attr>
+            <attr key="portNumber" type="int">40565</attr>
+            <attr key="running" type="bool">true</attr>
+            <attr key="timeout" type="long">0</attr>
+            <node name="inputs" path="/mainloop/_visualizer_input_file___events_0b4831e7f92f406c8907b69096901cad/inputs/">
+                <node name="output0" path="/mainloop/_visualizer_input_file___events_0b4831e7f92f406c8907b69096901cad/inputs/output0/">
+                    <attr key="from" type="string">input_file[events]</attr>
+                </node>
+            </node>
+        </node>
+        <node name="_visualizer_undistort___undistortedEvents_3573f1ad9ffa43599c5927c8e14c507e" path="/mainloop/_visualizer_undistort___undistortedEvents_3573f1ad9ffa43599c5927c8e14c507e/">
+            <attr key="_guiSupport" type="string">{"visualizerX":8,"visualizerY":0,"size":8,"minimized":false,"boxX":50.0,"boxY":400.0}</attr>
+            <attr key="_priorityAttributes" type="string">compression,ipAddress,portNumber</attr>
+            <attr key="compression" type="string">NONE</attr>
+            <attr key="ipAddress" type="string">127.0.0.1</attr>
+            <attr key="logLevel" type="string">INFO</attr>
+            <attr key="maxConcurrentConnections" type="int">10</attr>
+            <attr key="maxConnectionsBacklog" type="int">5</attr>
+            <attr key="maxDataBacklog" type="int">5</attr>
+            <attr key="moduleLibrary" type="string">dv_output_net_tcp_server</attr>
+            <attr key="portNumber" type="int">39941</attr>
+            <attr key="running" type="bool">true</attr>
+            <attr key="timeout" type="long">0</attr>
+            <node name="inputs" path="/mainloop/_visualizer_undistort___undistortedEvents_3573f1ad9ffa43599c5927c8e14c507e/inputs/">
+                <node name="output0" path="/mainloop/_visualizer_undistort___undistortedEvents_3573f1ad9ffa43599c5927c8e14c507e/inputs/output0/">
+                    <attr key="from" type="string">undistort[undistortedEvents]</attr>
+                </node>
+            </node>
+        </node>
+        <node name="input_file" path="/mainloop/input_file/">
+            <attr key="_guiSupport" type="string">{"boxX":150.0,"boxY":100.0}</attr>
+            <attr key="_priorityAttributes" type="string">file,loop</attr>
+            <attr key="file" type="string">/home/juan/Desktop/cam_calibration/rec_cam1.aedat4</attr>
+            <attr key="logLevel" type="string">INFO</attr>
+            <attr key="loop" type="bool">false</attr>
+            <attr key="mode" type="string">timeInterval</attr>
+            <attr key="moduleLibrary" type="string">dv_input_file</attr>
+            <attr key="pause" type="bool">false</attr>
+            <attr key="running" type="bool">false</attr>
+            <attr key="seek" type="long">0</attr>
+            <attr key="seekEnd" type="long">34479978</attr>
+            <attr key="seekStart" type="long">0</attr>
+            <attr key="timeDelay" type="long">10000</attr>
+            <attr key="timeInterval" type="long">5000</attr>
+        </node>
+        <node name="undistort" path="/mainloop/undistort/">
+            <attr key="_guiSupport" type="string">{"boxX":400.0,"boxY":250.0}</attr>
+            <attr key="_priorityAttributes" type="string">calibrationFile</attr>
+            <attr key="calibrationFile" type="string">/home/juan/Desktop/cam_calibration/cam1.xml</attr>
+            <attr key="fitMorePixels" type="float">0.0</attr>
+            <attr key="logLevel" type="string">INFO</attr>
+            <attr key="moduleLibrary" type="string">dv_undistort</attr>
+            <attr key="running" type="bool">true</attr>
+            <node name="inputs" path="/mainloop/undistort/inputs/">
+                <node name="events" path="/mainloop/undistort/inputs/events/">
+                    <attr key="from" type="string">input_file[events]</attr>
+                </node>
+                <node name="frames" path="/mainloop/undistort/inputs/frames/">
+                    <attr key="from" type="string"/>
+                </node>
+            </node>
+        </node>
+    </node>
+</dv>
