@@ -71,9 +71,7 @@ void get_empty_lut(int width, int height, map lut[]){
     }
 }
 
-void classic_load_lut(char fname[], int width, int height, map lut[]){
-
-    get_empty_lut(width, height, lut); 
+void load_lut(char fname[], int width, int height, map lut[]){
 
     FILE *file = fopen(fname, "r");
     
@@ -82,121 +80,124 @@ void classic_load_lut(char fname[], int width, int height, map lut[]){
         printf("Could not open the file\n");
     }
 
+    get_empty_lut(width, height, lut);    
     
     char content[1024];
     int lutix;
     bool done = false;
     while(fgets(content, 1024, file))
     {
-        char *val = strtok(content, ",");
+        char *v = strtok(content, ",");
         int tok_ix = 0;
         int np = 0;
-        while(val && !done )
+        while(v && !done )
         {
             switch(tok_ix) {
                 case 0:
-                    lutix = stoi(val);
-                    printf("lutix: %i\t", lutix);
+                    lutix = stoi(v);
                     break;
                 case 1:
-                    lut[lutix].p[0].x= stoi(val);
+                    lut[lutix].p[0].x= stoi(v);
                     if (lut[lutix].p[0].x >= 0){
                         np += 1;
                     }
-                    printf("x[0]: %i\t", lut[lutix].p[0].x);
                     break;
                 case 2:
-                    lut[lutix].p[0].y= stoi(val);
+                    lut[lutix].p[0].y= stoi(v);
                     lut[lutix].np= np;
-                    printf("y[0]: %i\t", lut[lutix].p[0].y);
                     break;
                 case 3:
-                    lut[lutix].p[1].x= stoi(val);
+                    lut[lutix].p[1].x= stoi(v);
                     if (lut[lutix].p[1].x >= 0){
                         np += 1;
                     }
-                    printf("x[1]: %i\t", lut[lutix].p[1].x);
                     break;
                 case 4:
-                    lut[lutix].p[1].y= stoi(val);
+                    lut[lutix].p[1].y= stoi(v);
                     lut[lutix].np= np;
-                    printf("y[1]: %i\n", lut[lutix].p[1].y);
                     break;
                 case 5:
                     done = true;
                     break;
             }
+            v = strtok(NULL, ",");
             tok_ix += 1;
-
-            val = strtok(NULL, ",");
-            
+            // printf("%i\n ", np);
         }
     }
     fclose(file);
     
 }
 
-void load_lut(char fname[], int width, int height, map lut[]){
 
-    
-    get_empty_lut(width, height, lut);   
+void modern_load_lut(char fname[], int width, int height, map lut[]){
 
     // File pointer
     std::ifstream infile(fname);  
     cout << "Doing stuff" << "\n";
 
     vector<string> row;
-    string line, val, temp;  
+    string line, word, temp;  
 
     while (std::getline(infile, line))
     {
+        cout << line << "\n";
+        // used for breaking words
         stringstream s(line);
   
         // read every column data of a row and
-        // store it in a string variable, 'val'
+        // store it in a string variable, 'word'
         int tok_ix = 0;
         int np = 0;
         int lutix;
         bool done = false;
-        while (getline(s, val, ',')) 
+        while (getline(s, word, ',')) 
         {
 
-            // std::istringstream iss(val);
+            std::istringstream iss(word);
+            
+
             switch(tok_ix) {
                 case 0:
-                    lutix = stoi(val);
+                    lutix = stoi(word);
                     printf("lutix: %i\t", lutix);
+                    // cout << "lutix: "  << lutix << "\t";
                     break;
                 case 1:
-                    lut[lutix].p[0].x= stoi(val);
+                    lut[lutix].p[0].x= stoi(word);
                     if (lut[lutix].p[0].x >= 0){
                         np += 1;
                     }
                     printf("x[0]: %i\t", lut[lutix].p[0].x);
+                    // cout << "x[0]: "  << lut[lutix].p[0].x << "\t";
                     break;
                 case 2:
-                    lut[lutix].p[0].y= stoi(val);
+                    lut[lutix].p[0].y= stoi(word);
                     lut[lutix].np= np;
                     printf("y[0]: %i\t", lut[lutix].p[0].y);
+                    // cout << "y[0]: "  << lut[lutix].p[0].y << "\t";
                     break;
                 case 3:
-                    lut[lutix].p[1].x= stoi(val);
+                    lut[lutix].p[1].x= stoi(word);
                     if (lut[lutix].p[1].x >= 0){
                         np += 1;
                     }
                     printf("x[1]: %i\t", lut[lutix].p[1].x);
+                    // cout << "x[1]: "  << lut[lutix].p[1].x << "\t";
                     break;
                 case 4:
-                    lut[lutix].p[1].y= stoi(val);
+                    lut[lutix].p[1].y= stoi(word);
                     lut[lutix].np= np;
                     printf("y[1]: %i\n", lut[lutix].p[1].y);
+                    // cout << "y[1]: "  << lut[lutix].p[1].y << "\n";
                     break;
                 case 5:
                     done = true;
                     break;
             }
-            tok_ix += 1;
         }
+        tok_ix += 1;
+        cout << "\n";
     }
     
     // print_lut(width, height, lut);
@@ -232,19 +233,10 @@ int main(int argc, char** argv)
     int width = stoi(argv[1]);
     int height = stoi(argv[2]);
     
-    int mode = stoi(argv[4]);
-    
     printf("Size: %i x %i\n", width, height);
 
     map lut[width*height];
-
-    if (mode == 0){
-        classic_load_lut(argv[3], width, height, lut); 
-    }
-    if (mode == 1){
-        load_lut(argv[3], width, height, lut); 
-    }
-
+    modern_load_lut(argv[3], width, height, lut); 
     print_lut(width, height, lut);
 
     count_stuff(width, height, lut);
